@@ -12,6 +12,10 @@
     "deploy": "gh-pages -d dist -r https://github.com/asdfqwer156/My_rect_pj.git"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@google/generative-ai": "^0.24.1",
+>>>>>>> a7ca2fa2926e9867d105c8507f280e10e74e8fad
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.22.3"
@@ -23,4 +27,8 @@
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a7ca2fa2926e9867d105c8507f280e10e74e8fad

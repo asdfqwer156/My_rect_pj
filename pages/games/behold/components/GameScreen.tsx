@@ -43,8 +43,12 @@ const getHintText = (stage: GameStage): string => {
 export const GameScreen: React.FC<GameScreenProps> = ({ peeps, setPeeps, onCapture, latestPost, showInstruction, animationPhase, currentStage }) => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const gameAreaRef = useRef<HTMLDivElement>(null);
+<<<<<<< HEAD
   // FIX: Explicitly provide `undefined` as the initial value for `useRef` to fix the "Expected 1 arguments, but got 0" error.
   const animationFrameId = useRef<number | undefined>(undefined);
+=======
+  const animationFrameId = useRef<number | undefined>();
+>>>>>>> a7ca2fa2926e9867d105c8507f280e10e74e8fad
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (gameAreaRef.current) {
