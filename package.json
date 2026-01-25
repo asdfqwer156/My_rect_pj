@@ -1,0 +1,26 @@
+{
+  "name": "my-website-builder",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "homepage": "https://asdfqwer156.github.io/My_rect_pj",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -r https://github.com/asdfqwer156/My_rect_pj.git"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.22.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "gh-pages": "^6.3.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  }
+}

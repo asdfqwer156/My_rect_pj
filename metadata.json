@@ -1,0 +1,5 @@
+{
+  "name": "My Website Builder",
+  "description": "A simple interface to create and manage a list of personal websites. Users can add new sites, view them in a grid, and remove them.",
+  "requestFramePermissions": []
+}
