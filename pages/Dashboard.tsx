@@ -36,6 +36,7 @@ const BUILT_IN_GAMES = [
     { id: 'minesweeper', title: 'Mine Sweeper', path: '/minesweeper', gradient: 'from-gray-400 to-gray-600', iconColor: 'text-gray-100', label: 'Brain', scoreKey: 'mines_wins_EASY', unit: '승' },
     { id: 'key-master', title: 'Key Master', path: '/key-master', gradient: 'from-slate-600 to-gray-900', iconColor: 'text-slate-100', label: 'Typing', scoreKey: 'highScore_keymaster_alpha_MEDIUM' },
     { id: 'behold', title: '우리가 보는 것', path: '/behold', gradient: 'from-stone-700 to-neutral-900', iconColor: 'text-stone-200', label: '사회 실험' },
+    { id: 'zen-garden', title: '고요한 정원', path: '/zen-garden', gradient: 'from-slate-800 to-gray-900', iconColor: 'text-slate-200', label: '휴식' },
     { id: 'calculator', title: '공룡 달리기', path: '/calculator', gradient: 'from-gray-700 to-gray-900', iconColor: 'text-gray-200', label: '아케이드', scoreKey: 'dino_highscore' },
 ];
 

@@ -20,6 +20,7 @@ import KeyMasterPage from './pages/games/KeyMasterPage';
 import YachtPage from './pages/games/YachtPage';
 import BeholdGamePage from './pages/games/behold/BeholdGamePage';
 import CalculatorPage from './pages/CalculatorPage';
+import ZenGardenPage from './pages/ZenGardenPage';
 
 import AddCategoryModal from './components/AddCategoryModal';
 import EditCategoryModal from './components/EditCategoryModal';
@@ -222,6 +223,7 @@ const App: React.FC = () => {
                     <Route path="yacht" element={<YachtPage />} />
                     <Route path="behold" element={<BeholdGamePage />} />
                     <Route path="calculator" element={<CalculatorPage />} />
+                    <Route path="zen-garden" element={<ZenGardenPage />} />
                     <Route path="view/:id" element={<WebsiteViewPage websites={websites} />} />
                 </Route>
             </Routes>
