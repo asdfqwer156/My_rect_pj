@@ -28,7 +28,9 @@ export const generateHeadline = async (prompt: string, stage: GameStage): Promis
   // Server-side: try to use @google/genai if available and an API key is configured
   if (typeof window === 'undefined' && process.env.API_KEY) {
     try {
-      const { GoogleGenAI } = await import('@google/genai');
+      const pkgName = '@google/genai';
+      // Use a non-literal import target to avoid rollup trying to statically resolve the module
+      const { GoogleGenAI } = await import(pkgName as any);
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
