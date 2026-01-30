@@ -1,7 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
 import type { GameStage } from '../types';
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export interface HeadlineResult {
   headline: string;
@@ -28,33 +25,39 @@ const getFallbackHeadline = (stage: GameStage): string => {
 }
 
 export const generateHeadline = async (prompt: string, stage: GameStage): Promise<HeadlineResult> => {
-  try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: prompt,
-    });
-    
-    const text = response.text;
-    if (text) {
+  // Server-side: try to use @google/genai if available and an API key is configured
+  if (typeof window === 'undefined' && process.env.API_KEY) {
+    try {
+      const { GoogleGenAI } = await import('@google/genai');
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const response = await ai.models.generateContent({
+        model: 'gemini-3-flash-preview',
+        contents: prompt,
+      });
+
+      const text = response.text;
+      if (text) {
+        return {
+          headline: text.replace(/["*]/g, ''),
+          error: null
+        };
+      }
       return {
-        headline: text.replace(/["*]/g, ''), // Clean up markdown and quotes
-        error: null
-      };
-    }
-    return {
         headline: getFallbackHeadline(stage),
         error: "AI가 비어있는 응답을 반환했습니다."
-    };
-  } catch (error) {
-    console.error("Error generating headline:", error);
-    const errorString = JSON.stringify(error);
-    let msg = "미디어 정전: 알 수 없는 AI 오류가 발생했습니다.";
-    if (errorString.includes('429') || errorString.includes('RESOURCE_EXHAUSTED')) {
-        msg = "AI 요청 한도를 초과했습니다. 잠시 후 다시 시도해 주세요.";
-    }
-    return {
+      };
+    } catch (error) {
+      console.error("Server-side AI error:", error);
+      return {
         headline: getFallbackHeadline(stage),
-        error: msg
-    };
+        error: "Server-side AI error"
+      };
+    }
   }
+
+  // Client-side or no API key: return the fallback headline and a helpful error
+  return {
+    headline: getFallbackHeadline(stage),
+    error: "AI는 현재 클라이언트 빌드에서 사용할 수 없습니다."
+  };
 };
